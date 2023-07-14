@@ -1,0 +1,82 @@
+<div class="container-fluid contenedor"> 
+  <h1>Formulario Alumnos Mejias</h1>
+      
+
+      <form [formGroup]="alumnosForm" (ngSubmit)="onsubmmit()" class="w-50">
+        <h5>Complete sus datos</h5>
+        <div class="row g-3">
+
+          <div class="col">
+            <input formControlName="nombre" 
+            type="text"  
+            [class.is-invalid]="nombreControl.invalid && nombreControl.touched"
+            class="form-control " 
+            placeholder="Nombre" 
+            aria-label="Nombre" 
+            >
+            <app-errores-formulario-helper
+              *ngIf="nombreControl.invalid && nombreControl.touched" 
+              [formErrors]="nombreControl.errors">
+            </app-errores-formulario-helper>
+                     
+          </div>
+          
+
+          <div class="col">
+            <input formControlName="apellido" 
+            type="text" class="form-control" 
+            [class.is-invalid]="apellidoControl.invalid && apellidoControl.touched"
+            placeholder="Apellido" 
+            aria-label="apellido"
+            >
+        <app-errores-formulario-helper
+              *ngIf="apellidoControl.invalid && apellidoControl.touched"
+              [formErrors]="apellidoControl.errors">
+        </app-errores-formulario-helper>
+          </div>
+
+
+          <div class="col-12">
+            <input formControlName="email" 
+            type="text" 
+            [class.is-invalid]="emailControl.invalid && emailControl.touched"
+            class="form-control" 
+            placeholder="Email" 
+            aria-label="Email"
+            >
+            <app-errores-formulario-helper
+              *ngIf="emailControl.invalid && emailControl.touched"
+              [formErrors]="emailControl.errors">
+            </app-errores-formulario-helper>
+          </div>
+
+          <div class="col-12">
+            <input formControlName="emailConfirma" 
+            type="text" 
+            [class.is-invalid]="emailConfirmaControl.invalid && emailConfirmaControl.touched"
+
+            class="form-control" 
+            placeholder="Confirma Email" 
+            aria-label="Confirma Email"
+            >
+            <app-errores-formulario-helper
+            *ngIf="emailConfirmaControl.invalid && emailConfirmaControl.touched"
+            [formErrors]="emailConfirmaControl.errors">
+        </app-errores-formulario-helper>
+          </div>
+
+
+        </div> 
+        <div class="col-12 mt-3">
+            <button class="btn btn-success" type="submit" [disabled]="!alumnosForm.valid">Guardar</button>
+        </div>
+      </form>
+    
+
+    <div class="listado">
+      <h5>Listado</h5>
+      <pre>{{ alumnos | json }}</pre>
+    </div>
+
+</div>
+

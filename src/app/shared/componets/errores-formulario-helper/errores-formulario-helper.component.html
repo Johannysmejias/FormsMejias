@@ -1,0 +1,18 @@
+<div *ngFor="let error of formErrors | keyvalue">
+    <ng-container [ngSwitch]="error.key">
+      <small class="text-danger" *ngSwitchCase="'required'">
+        Este campo es requerido
+      </small>
+      <small class="text-danger" *ngSwitchCase="'minlength'">
+        Este campo debe tener al menos {{ error.value['requiredLength'] }} caracteres
+      </small>
+      <small class="text-danger" *ngSwitchCase="'mustMatch'">
+        La dirección de E-mail no coincide.
+      </small>
+      <small class="text-danger" *ngSwitchCase="'email'">
+        No es un E-mail valido
+      </small>
+      <small  class="text-danger" *ngSwitchDefault> La dirección de E-mail no coincide</small>
+    </ng-container>
+  </div>
+  
